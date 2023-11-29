@@ -38,6 +38,7 @@ def chatbot(file_path):
     def home():
         return render_template('templates/index.html')
 
+    
     @app.route('/chatbot', methods=['POST'])
     def chatbot():
         user_input = request.form['user_input']

@@ -10,6 +10,10 @@ rules = read_rules("rules.txt")
 def chatbot_ui():
     return render_template('index.html')
 
+@app.route('/tes')
+def test():
+    return render_template('tes.html')
+
 @app.route('/chat', methods=['POST'])
 def chat():
     user_message = request.json.get('message')

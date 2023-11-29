@@ -1,133 +1,133 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Chatbot</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      * {
-        font-family: "Poppins";
-      }
-      
-      .chat-container {
-        max-height: calc(100vh - 160px);
-        height: auto;
-        overflow-y: scroll;
-        padding-bottom: 50px; /* Adjust this value to fit your input form */
-      }
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      .message-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin: 8px;
-      }
-      .message {
-        margin-top: 4px;
-        padding: 8px;
-        border-radius: 8px;
-      }
-      .user {
-        background-color: #D0E7D2;
-        align-self: flex-start;
-      }
-      .bot {
-        background-color: #D0E7D2;
-        align-self: flex-end;
-      }
-      .fixed-bottom {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        padding: 8px;
-        box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
-      }
-    </style>
-  </head>
-  <body class="bg-[#B0D9B1] ">
-    <div class="flex items-center justify-center py-8 bg-[#79AC78]">
-        <div class="flex items-center">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" class="w-10 mr-2" />
-            <h1 class="font-semibold text-white text-3xl mx-auto">Chatbot</h1>
-        </div>
-    </div>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>InforSeeker</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-icons.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/templatemo-topic-listing.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-icons.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-topic-listing.css') }}">
+<!--
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+
+-->
+    </head>
     
-    <div class="absolute translate-x-[1550px] translate-y-32">
-        <img src="{{ url_for('static', filename='img/robot.png') }}" class="w-80 h-80" />
-    </div>
-   
-    <div id="chat">
-      <div id="chat-container" class="chat-container mx-96"></div>
-      <div class="fixed-bottom bg-[#B0D9B1]">
-        <form id="user-input-form" class="my-8 text-center">
-          <input
-            type="text"
-            id="user-input"
-            placeholder="Type a message..."
-            class="border border-gray-500 bg-[#D0E7D2] rounded-xl py-1 px-3"
-          />
-          <button
-            type="submit"
-            class="border border-gray-500 hover:bg-[#79AC78] hover:border-white hover:text-white rounded-xl py-1 px-6"
-          >
-            Send
-          </button>
-        </form>
-      </div>
-    </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const chatContainer = document.getElementById("chat-container");
-        const userInput = document.getElementById("user-input");
-        const userInputForm = document.getElementById("user-input-form");
+    <body id="top">
 
-        userInputForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-          const userMessage = userInput.value;
-          userInput.value = "";
+        <main>
 
-          const messageContainer = document.createElement("div");
-          messageContainer.classList.add("message-container");
-          chatContainer.appendChild(messageContainer);
+          
+            
 
-          const userMessageElement = document.createElement("div");
-          userMessageElement.classList.add("message", "user");
-          userMessageElement.textContent = ` ${userMessage}`;
-          messageContainer.appendChild(userMessageElement);
+            
 
-          fetch("/chat", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ message: userMessage }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              const botMessageElement = document.createElement("div");
-              botMessageElement.classList.add("message", "bot");
-              const words = data.response.split(" ");
-              words.forEach((word) => {
-                const span = document.createElement("span");
-                span.textContent = `${word} `;
-                botMessageElement.appendChild(span);
-              });
-              messageContainer.appendChild(botMessageElement);
 
-              chatContainer.scrollTop = chatContainer.scrollHeight;
-            })
-            .catch((error) => console.error(error));
-        });
-      });
-    </script>
-  </body>
+            
+
+
+           
+
+
+            <section class="timeline-section section-padding" id="section_3">
+                <div class="section-overlay"></div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="text-white mb-4">How to use InforSeeker</h1>
+                        </div>
+
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <div class="timeline-container">
+                                <ul class="vertical-scrollable-timeline" >
+                                    <div class="list-progress">
+                                        <div class="inner"></div>
+                                    </div>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Search the topic you need</h4>
+
+                                        <p class="text-white">You can search the topic you need in InforSeeker. Click button below to continue using inforSeeker  </p>
+                                        <a href="/index.html" class="btn custom-btn custom-border-btn ms-3">Click here! </a>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-search"></i>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <h4 class="text-white mb-3">Topic in InforSeeker</h4>
+
+                                        <p class="text-white">InforSeeker only contains some information about data mining, 
+                                            Software Engineering, 
+                                            Computer Networks & Cybersecurity and 
+                                            GeoSpatial</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-bookmark"></i>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">How InforSeeker works</h4>
+
+                                        <p class="text-white"> InforSeeker works with ruled base only. The query user given will match with the query in database and it will check the similarity between query from user and query in the database   </p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-book"></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 text-center mt-5">
+                            <p class="text-white">
+                                You can download the rules in this link
+                                <a href="https://github.com/MuhammadFarhan009/si" class="btn custom-btn custom-border-btn ms-3">Click Here!</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            
+
+
+           
+        </main>
+
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/click-scroll.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+      
+
+    </body>
 </html>

@@ -1,97 +1,133 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Chatbot</title>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Chatbot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 100px);
-            overflow-y: scroll;
-        }
-        .message {
-            margin: 8px;
-            padding: 8px;
-            border-radius: 8px;
-        }
-        .user {
-            background-color: #F3F4F6;
-            align-self: flex-start;
-        }
-        .bot {
-            background-color: #DBEAFE;
-            align-self: flex-start;
-        }
-        .fixed-bottom {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            padding: 8px;
-            box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
-        }
+      * {
+        font-family: "Poppins";
+      }
+      
+      .chat-container {
+        max-height: calc(100vh - 160px);
+        height: auto;
+        overflow-y: scroll;
+        padding-bottom: 50px; /* Adjust this value to fit your input form */
+      }
+
+      .message-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 8px;
+      }
+      .message {
+        margin-top: 4px;
+        padding: 8px;
+        border-radius: 8px;
+      }
+      .user {
+        background-color: #D0E7D2;
+        align-self: flex-start;
+      }
+      .bot {
+        background-color: #D0E7D2;
+        align-self: flex-end;
+      }
+      .fixed-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 8px;
+        box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+      }
     </style>
-</head>
-<body>
-    <h1 class="mx-auto text-center py-8 bg-gray-300 text-2xl">Chatbot</h1>
-    <div id="chat">
-        <div id="chat-container" class="chat-container"></div>
-        <div class="fixed-bottom">
-            <form id="user-input-form" class="my-8">
-              <input type="text" id="user-input" placeholder="Type a message..." class="border border-gray-500 rounded-xl py-1 px-3" />
-              <button type="submit" class="border border-gray-500 rounded-xl py-1 px-6">Send</button>
-            </form>
+  </head>
+  <body class="bg-[#B0D9B1] ">
+    <div class="flex items-center justify-center py-8 bg-[#79AC78]">
+        <div class="flex items-center">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="w-10 mr-2" />
+            <h1 class="font-semibold text-white text-3xl mx-auto">Chatbot</h1>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const chatContainer = document.getElementById('chat-container');
-            const userInput = document.getElementById('user-input');
-            const userInputForm = document.getElementById('user-input-form');
-
-            userInputForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-                const userMessage = userInput.value;
-                userInput.value = '';
-
-                const userMessageElement = document.createElement('div');
-                userMessageElement.classList.add('message', 'user');
-                userMessageElement.textContent = `You: ${userMessage}`;
-                chatContainer.appendChild(userMessageElement);
-
-                fetch('/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ 'message': userMessage }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    const botMessageElement = document.createElement('div');
-                    botMessageElement.classList.add('message', 'bot');
-                    botMessageElement.textContent = `Chatbot: ${data.response}`;
-                    chatContainer.appendChild(botMessageElement);
-
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                })
-                .catch(error => console.error(error));
-            });
-        });
-    </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
     
-</body>
+    <div class="absolute translate-x-[1550px] translate-y-32">
+        <img src="{{ url_for('static', filename='img/robot.png') }}" class="w-80 h-80" />
+    </div>
+   
+    <div id="chat">
+      <div id="chat-container" class="chat-container mx-96"></div>
+      <div class="fixed-bottom bg-[#B0D9B1]">
+        <form id="user-input-form" class="my-8 text-center">
+          <input
+            type="text"
+            id="user-input"
+            placeholder="Type a message..."
+            class="border border-gray-500 bg-[#D0E7D2] rounded-xl py-1 px-3"
+          />
+          <button
+            type="submit"
+            class="border border-gray-500 hover:bg-[#79AC78] hover:border-white hover:text-white rounded-xl py-1 px-6"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const chatContainer = document.getElementById("chat-container");
+        const userInput = document.getElementById("user-input");
+        const userInputForm = document.getElementById("user-input-form");
+
+        userInputForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const userMessage = userInput.value;
+          userInput.value = "";
+
+          const messageContainer = document.createElement("div");
+          messageContainer.classList.add("message-container");
+          chatContainer.appendChild(messageContainer);
+
+          const userMessageElement = document.createElement("div");
+          userMessageElement.classList.add("message", "user");
+          userMessageElement.textContent = ` ${userMessage}`;
+          messageContainer.appendChild(userMessageElement);
+
+          fetch("/chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: userMessage }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const botMessageElement = document.createElement("div");
+              botMessageElement.classList.add("message", "bot");
+              const words = data.response.split(" ");
+              words.forEach((word) => {
+                const span = document.createElement("span");
+                span.textContent = `${word} `;
+                botMessageElement.appendChild(span);
+              });
+              messageContainer.appendChild(botMessageElement);
+
+              chatContainer.scrollTop = chatContainer.scrollHeight;
+            })
+            .catch((error) => console.error(error));
+        });
+      });
+    </script>
+  </body>
 </html>
