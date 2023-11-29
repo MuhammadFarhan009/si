@@ -34,7 +34,7 @@
 "Apa peran perangkat keras (hardware) dalam data mining: Perangkat keras yang kuat dapat mempercepat proses data mining dengan memproses data lebih cepat, terutama ketika menangani "big data.",
 "Apa itu "ensemble learning" dalam machine learning dan data mining: "Ensemble learning" adalah pendekatan yang menggabungkan beberapa model machine learning untuk meningkatkan akurasi dan kinerja prediksi.",
 "Bagaimana data mining digunakan dalam penelitian dalam bidang sains sosial: Data mining digunakan dalam penelitian sains sosial untuk menganalisis data survei, perilaku sosial, dan tren dalam masyarakat.",
-"Apa perbedaan antara "supervised learning" dan "unsupervised learning" dalam machine learning: "Supervised learning" melibatkan model yang dilatih dengan data berlabel, sedangkan "unsupervised learning" tidak memerlukan label dalam data pelatihan.",
+"Apa perbedaan antara supervised learning dan unsupervised learning dalam machine learning: "Supervised learning" melibatkan model yang dilatih dengan data berlabel, sedangkan "unsupervised learning" tidak memerlukan label dalam data pelatihan.",
 "Apa yang dimaksud dengan "data imputation" dalam preprocessing data: "Data imputation" adalah proses mengisi nilai yang hilang atau kosong dalam data dengan estimasi yang masuk akal.",
 "Bagaimana data mining digunakan dalam pengembangan perangkat lunak berbasis AI: Data mining digunakan dalam pengembangan perangkat lunak berbasis AI untuk melatih model AI dengan data yang relevan.",
 "Apa itu "time series analysis" dalam data mining: "Time series analysis" adalah metode analisis data yang fokus pada pola perubahan dalam data sepanjang waktu, seperti data keuangan harian atau data cuaca.",
